@@ -21,7 +21,7 @@ To use it:
 	$ python autologin.py
 
 ## Docker
-[Docker Hub](https://hub.docker.com/r/strenkml/afraid-autologin)
+[Docker Hub](https://hub.docker.com/r/foodeas/afraid-autologin)
 ### Usage
 #### docker-compose ([click here for more info](https://docs.linuxserver.io/general/docker-compose))
 ```yaml
@@ -29,7 +29,7 @@ To use it:
 version: "2.1"
 services:
   afraid-autologin:
-    image: strenkml/afraid-autologin
+    image: foodeas/afraid-autologin
     container_name: afraid-autologin
     environment:
       - USERNAME=afraid_username
@@ -42,7 +42,7 @@ docker run -d \
   --name=afraid-login\
   -e USERNAME=afraid_username\
   -e PASSWORD=afraid_password\
-  strenkml/afraid-autologin
+  foodeas/afraid-autologin
 ```
 ### Parameters
 | Parameter | Function |
