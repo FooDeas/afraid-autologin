@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.options import Options
 import argparse
 import os
@@ -73,22 +74,22 @@ def main(logger):
     time.sleep(random.randint(1,3))
 
     logger.debug('navigating to login page')
-    browser.find_element("link text", "Domains").click()
+    browser.find_element(By.LINK_TEXT, "Main Menu").click()
     time.sleep(random.randint(1,3))
 
     logger.debug('submit login form')
-    username_field = browser.find_element("name", 'username')
-    password_field = browser.find_element("name", 'password')
+    username_field = browser.find_element(By.NAME, "username")
+    password_field = browser.find_element(By.NAME, "password")
     username_field.send_keys(USERNAME)
     password_field.send_keys(PASSWORD)
-    browser.find_element("name", 'submit').click()
+    browser.find_element(By.NAME, "submit").click()
     time.sleep(random.randint(1,3))
     logger.debug('extending account if dormant');
     browser.get(URL_DORMANT);
 
 #    https://freedns.afraid.org/dormant/
 #    https://freedns.afraid.org/dormant/?action=extend
-    buttons = browser.find_elements("xpath", "//input[@type='submit']")
+    buttons = browser.find_elements(By.XPATH, "//input[@type='submit']")
     logger.debug(buttons)
     for input in buttons:
     #print attribute name of each input element
@@ -100,7 +101,7 @@ def main(logger):
 
     time.sleep(random.randint(1,3))
     # view the subdomains
-    browser.find_element("link text", "Subdomains").click()
+    browser.find_element(By.LINK_TEXT, "Subdomains").click()
 
     # check whether login was successful
     # 'Last IP' is only shown after login
