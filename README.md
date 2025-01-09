@@ -40,9 +40,16 @@ services:
 ```bash
 docker run -d \
   --name=afraid-login\
-  -e USERNAME=afraid_username\
-  -e PASSWORD=afraid_password\
+  -e USERNAME=afraid_username \
+  -e PASSWORD=afraid_password \
   foodeas/afraid-autologin
+```
+#### One time execution
+```
+docker run --rm -it \
+  -e USERNAME=afraid_username \
+  -e PASSWORD=afraid_password \
+  foodeas/afraid-autologin /app/execute.sh
 ```
 ### Parameters
 | Parameter | Function |

@@ -84,19 +84,19 @@ def main(logger):
     password_field.send_keys(PASSWORD)
     browser.find_element(By.NAME, "submit").click()
     time.sleep(random.randint(1,3))
-    logger.debug('extending account if dormant');
+    logger.debug('extending account if dormant')
+    # https://freedns.afraid.org/dormant/
     browser.get(URL_DORMANT);
 
-#    https://freedns.afraid.org/dormant/
-#    https://freedns.afraid.org/dormant/?action=extend
     buttons = browser.find_elements(By.XPATH, "//input[@type='submit']")
     logger.debug(buttons)
     for input in buttons:
-    #print attribute name of each input element
-    #    print input.get_attribute('value')
-        if input.get_attribute('value') == "Extend your account" :
+        #logger.debug('attribute name of each input element')
+        #logger.debug(input.get_attribute('value'))
+        if input.get_attribute('value') == "Extend your account":
             input.click()
             break
+    # https://freedns.afraid.org/dormant/?action=extend
     browser.get(URL_DORMANT_EXTEND);
 
     time.sleep(random.randint(1,3))

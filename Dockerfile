@@ -13,13 +13,17 @@ RUN crontab /etc/cron.d/afraid-cron
 RUN touch /var/log/cron.log
 
 WORKDIR /app
-COPY requirements.txt requirements.txt
 
+COPY requirements.txt .
 RUN pip3 install virtualenv
 RUN virtualenv venv
 RUN . /app/venv/bin/activate && pip3 install -r requirements.txt
-COPY . .
 
+COPY autologin.py .
+COPY settings.py .
+COPY entrypoint.sh .
 RUN chmod +x entrypoint.sh
+COPY execute.sh .
+RUN chmod +x execute.sh
 
 CMD ./entrypoint.sh
