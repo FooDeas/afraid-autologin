@@ -19,6 +19,7 @@ RUN pip3 install virtualenv
 RUN virtualenv venv
 RUN . /app/venv/bin/activate && pip3 install -r requirements.txt
 
+COPY se-config.toml /root/.cache/selenium/se-config.toml
 COPY autologin.py .
 COPY settings.py .
 COPY entrypoint.sh .
